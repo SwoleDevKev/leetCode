@@ -22,15 +22,17 @@ Output: false
 
 // Answer
 
-var canPlaceFlowers = function(flowerbed, n) {
+const canPlaceFlowers = function(flowerbed, n) {
     
     let number = n
 
+    
+
     for (let i=0 ; i < flowerbed.length; i++){
-        if (i == 0 && flowerbed[i] == 0 && flowerbed[i+1] == 0){
+        if (i == 0 && !flowerbed[i] && !flowerbed[i+1] ){
             flowerbed[i] = 1
             number -= 1
-        } else if (flowerbed[i] == 0 && flowerbed[i-1] == 0 && flowerbed[i+1]       == 0 ){
+        } else if (flowerbed[i] == 0 && flowerbed[i-1] == 0 && flowerbed[i+1]  == 0 ){
             flowerbed[i] = 1;
             number -= 1
         } else if (i == flowerbed.length -1 && flowerbed[i -1] ==0 && flowerbed[i] ==0){
@@ -39,6 +41,6 @@ var canPlaceFlowers = function(flowerbed, n) {
         }
     }
 
-   return number == 0 ? true : false
+   return number <= 0 ? true : false
      
 };
