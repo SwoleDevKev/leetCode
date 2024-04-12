@@ -42,3 +42,33 @@ const compress = function(chars) {
     return len
 
 }
+const compress2 = function(chars) {
+    let count = 1
+    const length = chars.length
+    let i = 0
+    let index = 0
+
+    while(i < length){
+       let j = i+1
+
+      while (length && chars[i] === chars[j]){
+        count++
+        j++
+       } 
+       
+        chars[index++] = chars[i];
+
+        if (count > 1) {
+            let countStr = count.toString();
+            for (let k = 0; k < countStr.length; k++) {
+                chars[index++] = countStr[k];
+            }
+        }
+
+        i = j
+        count = 1
+    }
+
+    return index;
+        
+};
